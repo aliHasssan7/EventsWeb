@@ -1,0 +1,58 @@
+﻿@page
+@model EventsWeb122.Pages.events.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+   
+</p>
+<dive>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Events[0].EventName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Events[0].Desription)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Events[0].ImgeUrl)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Events[0].Date)
+            </th>
+            
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Events) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.EventName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Desription)
+            </td>
+            <td>
+                    <img src="data:image/jpg;base64,@item.ImgeUrl" width="120XP" height="120XP" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+           
+    </tbody>
+</table>
+</dive>
